@@ -2,7 +2,8 @@ pipeline {
     agent any
 
         environment {
-            DOCKER_IMAGE = 'project0'
+	    DOCKER_REPO = 'gowtham3636/dev'
+            DOCKER_IMAGE = 'gowtham3636/dev'
             DOCKER_CREDENTIALS = 'dockerhub-credentials'
             GIT_REPO = 'https://github.com/jgowtham2003/devops-build.git'
         }
