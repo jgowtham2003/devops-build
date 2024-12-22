@@ -2,8 +2,8 @@ pipeline {
     agent any
 
         environment {
-	    DOCKER_REPO = 'gowtham3636/dev'
-            DOCKER_IMAGE = 'gowtham3636/dev'
+	    DOCKER_REPO = 'gowtham3636/prod'
+            DOCKER_IMAGE = 'gowtham3636/prod'
             DOCKER_CREDENTIALS = 'dockerhub-credentials'
             GIT_REPO = 'https://github.com/jgowtham2003/devops-build.git'
         }
@@ -19,7 +19,7 @@ pipeline {
 		    steps {
 			    script {
 				    // Build the Docker image using the Docker Pipeline plugin
-				    docker.build("${DOCKER_IMAGE}:dev${BUILD_NUMBER}", ".")
+				    docker.build("${DOCKER_IMAGE}:prod${BUILD_NUMBER}", ".")
 			    }
 		    }
 	    }
@@ -27,7 +27,7 @@ pipeline {
 		    steps {
 			    script{
 				    docker.withRegistry('https://registry.hub.docker.com',DOCKER_CREDENTIALS) {
-					    docker.image("${DOCKER_IMAGE}:dev${BUILD_NUMBER}").push()
+					    docker.image("${DOCKER_IMAGE}:prod${BUILD_NUMBER}").push()
 
 			    	}
 			    }
